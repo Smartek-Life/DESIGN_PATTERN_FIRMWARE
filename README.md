@@ -7,7 +7,8 @@ Documentação para definição de padrões de projetos de Firware para Smartek
 ## SUGESTÕES DE PROGRAMAÇÃO, CLEAN CODE.
 
 ## DOCUMENTAÇÃO DE CÓDIGO
-Para documentação deve ser utilizado o padrão [DOXYGEN](https://www.doxygen.nl/index.html "Doxygen")
+Para documentação deve ser utilizado o padrão [DOXYGEN](https://www.doxygen.nl/index.html "Doxygen").
+
 Toda a documentação deve ser escrita em maiúscula quando não for padrão do próprio Doxygen, conforme vemos abaixo:
 
 ```
@@ -59,7 +60,6 @@ if ((millis() - timeSensorRead) > TIME_NEW_READ)
 }
 ```
 
-RV6 - Varia
 
 ### PADRÃO DE #DEFINE
 RD1 - Não utilizar números mágicos no código. Todos os valores constantes em código devem estar contidos em uma diretiva de pré-processamento (#define) para facilitar a manutenibilidade de código.
@@ -86,10 +86,10 @@ enum ESCALA_SENSOR
 
 
 ### PADRÃO DE ENGENHARIA DE SOFTWARE
-RS1 - Toda verificação de if, else if, deve contem um else. Porém quando o if é direto, é opcional.
-RS2 - Toda verificação de if com retorno de função booleana, variável booleana deve ser verificado diretamente.
-RS3 - Toda verificação de if que contem uma variável int8_t, uint8_t ou superior, deve conter o valor de veirificação em uma #define ou enum
-RS4 - Toda verificação de if que contem mais que uma verificação, cada verificação deve estar separa por parenteses. Excessão (caso a verificação seja um booleano)
+* RS1 - Toda verificação de if, else if, deve contem um else. Porém quando o if é direto, é opcional.
+* RS2 - Toda verificação de if com retorno de função booleana, variável booleana deve ser verificado diretamente.
+* RS3 - Toda verificação de if que contem uma variável int8_t, uint8_t ou superior, deve conter o valor de veirificação em uma #define ou enum
+* RS4 - Toda verificação de if que contem mais que uma verificação, cada verificação deve estar separa por parenteses. Excessão (caso a verificação seja um booleano)
 
 ```
 #define MIN_VALOR_SENSOR 10
