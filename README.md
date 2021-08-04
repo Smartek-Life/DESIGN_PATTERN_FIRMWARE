@@ -19,11 +19,14 @@ Toda a documentação deve ser escrita em maiúscula quando não for padrão do 
 */
 ```
 
+### PADRÃO DE NOMEAÇÃO
+RN1 - A declaração deve iniciar com a responsabilidade, usabilidade e posteriormente com sua função. Conforme Padrões abaixo
+
 ### PADRÃO DE VARIÁVEIS
 RV1 - Os tipos de variáveis são explicitamente declaradas para facilitar a portabilidade de arquitetura da aplicação, aumentar a segurança e padrão de código.
 RV2 - Todas as variáveis declaradas também devem ser inicializadas com um valor padrão, para evitar lixo e erros de operação.
 RV3 - Todas as variáveis devem ser declaradas utilizando padrão camelcase.
-RV4 - A declaração deve iniciar com a responsabilidade da variável e posteriormente com sua função.
+RV4 - As variáveis devem segui o padrão de nomeação RN1.
 
 ```
 //VARIAVEL INTEIRA BOOLEANA.
@@ -58,5 +61,72 @@ if ((millis() - timeSensorRead) > TIME_NEW_READ)
 
 RV6 - Varia
 
-### PADRÃO DE DECLARAÇÃO
+### PADRÃO DE #DEFINE
 RD1 - Não utilizar números mágicos no código. Todos os valores constantes em código devem estar contidos em uma diretiva de pré-processamento (#define) para facilitar a manutenibilidade de código.
+RD2 - Diretivas devem ser declaradas tudo em letras maiúsculas, seguindo o padrao de definição de nomes RN1.
+
+```
+#define USER_WIFI_SMARTEK //USUARIO PADRAO DO WI-FI DA SMARTEK
+#define 
+```
+
+### PADRÃO DE ENUM
+RE1 - Toda enum definida, deve ter um nome descrito seguindo o padrão RD2.
+RE2 - Toda enum deve conte seus valores de forma explicita.
+
+```
+enum ESCALA_SENSOR
+{
+    OUT_OF_SCALE = 0,
+    ESCALE_1 = 1,
+    ESCALE_2 = 2,
+    ERRO_OF_SCALE = 3
+}
+```
+
+
+### PADRÃO DE ENGENHARIA DE SOFTWARE
+RS1 - Toda verificação de if, else if, deve contem um else. Porém quando o if é direto, é opcional.
+RS2 - Toda verificação de if com retorno de função booleana, variável booleana deve ser verificado diretamente.
+RS3 - Toda verificação de if que contem uma variável int8_t, uint8_t ou superior, deve conter o valor de veirificação em uma #define ou enum
+RS4 - Toda verificação de if que contem mais que uma verificação, cada verificação deve estar separa por parenteses. Excessão (caso a verificação seja um booleano)
+
+```
+#define MIN_VALOR_SENSOR 10
+#define MAX_VALOR_SENSOR 100
+bool sensorReadRTemperatura = NULL;
+uint8_t escalaTemperaturaSensor = NULL;
+uint8_t valorSensorTemperatura = NULL;
+
+enum ESCALA_SENSOR
+{
+    OUT_OF_SCALE = 0,
+    ESCALE_1 = 1,
+    ESCALE_2 = 2,
+    ERRO_OF_SCALE = 3
+}
+
+if (!sensorRead)
+{
+    valorSensorTemperatura = readSensor();
+    sensorRead = false;
+}
+
+if (!valorSensorTemperatura || (valorSensorTemperatura < MIN_VALOR_SENSOR))
+{
+    escalaTemperaturaSensor = OUT_OF_SCALE;
+}
+else if ((valorSensorTemperatura < MAX_VALOR_SENSOR) && (valorSensorTemperatura >= MIN_VALOR_SENSOR))
+{
+    escalaTemperaturaSensor = ESCALA_1;
+}
+else if(valorSensorTemperatura > MAX_VALOR_SENSOR)
+{
+    escalaTemperaturaSensor = ESCALA_2;
+}
+else
+{
+    escalaTemperaturaSensor = ERRO_OF_SCALE;
+}
+
+```
