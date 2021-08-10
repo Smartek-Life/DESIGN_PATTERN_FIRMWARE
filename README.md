@@ -19,6 +19,10 @@ Documentação para definição de padrões de projetos de Firware para Smartek
 */
 ```
 
+### PADRÃO DE DESENVOLVIMENTO
+* RD1 - Desenvolver utilizando apenas o core do ESP8266 da smartek com as boards config.
+* RD2 - Para lançamento de release, deve ser testado o OTA depois do OTA.
+
 ### PADRÃO DE CÓDIGO
 * RC1 - Abertura de chave deve ser feita na linha abaixo, para melhor identação.
 * RC2 - Formatação de código deve-se utilizar a padrão do VSCode (Padrão C++).
